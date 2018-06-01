@@ -1,0 +1,68 @@
+<section class="service">
+    <div class="container">
+        <div class="service-wrapper">
+        {{  captionItem(title = 'Our Services', desc = 'With Passion & Experience') }}
+            <ul class="service__list">
+                {% set services = [
+                    {
+                        icon: '../img/service-icon1.png',
+                        caption: 'Dictum tincidunt',
+                        mint: 'diam',
+                        text: 'Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Integer at purus vulputate,
+                        vehicula nisi vitae, lobortis ante.'
+                    },
+                    {
+                        icon: '../img/service-icon2.png',
+                        caption: 'Dictum tincidunt',
+                        mint: 'diam',
+                        text: 'Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Integer at purus vulputate,
+                        vehicula nisi vitae, lobortis ante.'
+                    },
+                    {
+                        icon: '../img/service-icon3.png',
+                        caption: 'Dictum tincidunt',
+                        mint: 'diam',
+                        text: 'Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Integer at purus vulputate,
+                        vehicula nisi vitae, lobortis ante.'
+                    },
+                    {
+                        icon: '../img/service-icon4.png',
+                        caption: 'Dictum tincidunt',
+                        mint: 'diam',
+                        text: 'Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Integer at purus vulputate,
+                        vehicula nisi vitae, lobortis ante.'
+                    },
+                    {
+                        icon: '../img/service-icon5.png',
+                        caption: 'Dictum tincidunt',
+                        mint: 'diam',
+                        text: 'Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Integer at purus vulputate,
+                        vehicula nisi vitae, lobortis ante.'
+                    },
+                    {
+                        icon: '../img/service-icon6.png',
+                        caption: 'Dictum tincidunt',
+                        mint: 'diam',
+                        text: 'Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Integer at purus vulputate,
+                        vehicula nisi vitae, lobortis ante.'
+                    }
+                ] %}
+                {% for item in services %}
+                    <li class="service__item">
+                        <span class="service__icon"><img src="{{ item.icon }}" alt=""></span>
+                        <div class="service__context">
+                            <p class="service__caption">{{ item.caption }} <span class="logo__dot">{{ item.mint }}</span></p>
+                            <p class="service__text">{{ item.text }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>

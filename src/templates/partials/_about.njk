@@ -1,0 +1,109 @@
+<section class="about">
+    <div class="container">
+        <div class="about-wrapper">
+            <div class="about-roran">
+                <div class="about-roran__titles-first">
+                    <h1>
+                        About Roran <span class="logo__dot">.</span>
+                    </h1>
+                    <p>
+                        Creative Studio
+                    </p>
+
+                </div>
+                <div class="about-roran__titles-second">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+                        vulputate, vehicula nisi vitae, lobortis ante. Praesent sodales iaculis ultricies
+                    </p>
+                </div>
+                <div class="about-roran__flex">
+                    <div class="about-roran__flex -item">
+                        <img src="img/about_icon1.png" alt="Some fancy colors">
+                        <h3>Some fancy <span class="logo__dot">colors</span></h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Integer at purus vulputate, vehicula nisi vitae, lobortis ante.
+                        </p>
+                    </div>
+                    <div class="about-roran__flex -item">
+                        <img src="img/about_icon2.png" alt="Enough coffee breaks">
+                        <h3>Enough <span class="logo__dot">coffee breaks</span></h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Integer at purus vulputate, vehicula nisi vitae, lobortis ante.
+                        </p>
+                    </div>
+                    <div class="about-roran__flex -item">
+                        <img src="img/about_icon3.png" alt="A little bit of magic">
+                        <h3>A little bit of <span class="logo__dot">magic</span></h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Integer at purus vulputate, vehicula nisi vitae, lobortis ante.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <section class="section-numbers">
+        <div class="container">
+            <ul class="numbers__list">
+                {% set numbers = [
+                    {
+                        icon: '../img/number_icon1.png',
+                        number: '1085',
+                        text: 'Empty cups'
+                    },
+                    {
+                        icon: '../img/number_icon2.png',
+                        number: '102',
+                        text: 'Happy clients'
+                    },
+                    {
+                        icon: '../img/number_icon3.png',
+                        number: '25',
+                        text: 'BBQ meetings'
+                    },
+                    {
+                        icon: '../img/number_icon4.png',
+                        number: '29',
+                        text: 'Cocktail parties'
+                    }
+                ] %}
+                {% for item in numbers %}
+                    <li class="numbers__item">
+                        <span class="numbers__icon"><img src="{{ item.icon }}" alt=""></span>
+                        <div class="numbers__context">
+                            <span class="numbers__num">{{ item.number }}</span>
+                            <p class="numbers__text">{{ item.text }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+<section class="clients-bar">
+    <div class="container">
+    <div class="clients-bar__titles">
+        <h2>
+            Some of our clients
+        </h2>
+        <p>
+            We &#x2661; every single one
+        </p>
+    </div>
+    <div class="clients-bar__logo">
+         {% set clientsItems = ['img/clients-mashable.png', 'img/clients-jquery.png', 'img/clients-lunartemplates.png', 'img/clients-vhdesign.png'] %}
+            <ul class="clients-bar__list">
+                {% for item in clientsItems %}
+                    <li class="clients-bar__item"><img src="{{ item }}" alt=""></li>
+                {% endfor %}
+            </ul>
+    </div>
+    </div>
+</section>
+
+

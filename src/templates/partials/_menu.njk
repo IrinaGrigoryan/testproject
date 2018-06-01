@@ -1,0 +1,32 @@
+<div class="top-bar">
+   <div class="container">
+           <div class="top-bar__wrapper">
+               <div class="top-bar__logo">
+                   <div class="logo">
+                       Roran <span class="logo__dot">.</span>
+                   </div>
+               </div>
+
+
+             {% set menuItems = ['Home', 'About', 'Services', 'Team', 'Portfolio', 'Contact'] %}
+                <div class="top-bar__menu">
+                    <nav class="menu"> {# size: calc(100% - logog - social) padding left an right #}
+                        <ul class="menu__list"> {# margin - #}
+                            {% for item in menuItems %} {# li : padding + #}
+                                <li class="menu__item"><a href="#" class="menu__link">{{ item }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </div>
+
+               <div class="top-bar__social">
+                   {% set socialsItems = ['img/linkedIn-icon.png', 'img/pinterest-icon.png', 'img/twitter-icon.png', 'img/facebook-icon.png'] %}
+                   <ul class="social">
+                       {% for item in socialsItems %}
+                           <li class="social__item"><a href="#" class="social__link"><img src="{{ item }}" alt=""></a></li>
+                       {% endfor %}
+                   </ul>
+               </div>
+           </div>
+   </div>
+</div>
