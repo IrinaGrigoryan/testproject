@@ -1,0 +1,49 @@
+<section class="portfolio">
+    <div>
+        <div class="portfolio__caption">
+            {{  captionItem(title = 'Portfolio', desc = 'This is what we’ve been working on') }}
+        </div>
+    </div>
+    <ul class="portfolio__list-btn">
+        {% set items = ["Web", "Digital Art", "Illustration", "Branding", "All"] %}
+        {% for item in items %}
+            <li class="portfolio__bullet"><button class="portfolio__bullet-btn">{{ item }}</button></li>
+        {% endfor %}
+    </ul>
+    <div class="portfolio__images">
+        {% for item in range(0, 8) %}
+            <div class="portfolio__item">
+                <a href="#" class="portfolio__link">
+                    <span class="portfolio__img">
+                        <img src="https://picsum.photos/340/300/?random&image={{ loop.index }}" alt="">
+                    </span>
+                    <span class="portfolio__detail">
+
+
+                                <div class="portfolio__context">
+                                     <p class="portfolio__title">
+                                        Free Website PSD
+                                    </p>
+                                    <p class="portfolio__desc">
+                                        Web
+                                    </p>
+                                </div>
+
+                    </span>
+                </a>
+            </div>
+        {% endfor %}
+
+    {#<a href="#" class="portfolio__web-link">#}
+        {#<img class="portfolio__link-icon" src="../img/link-icon.png" alt="">#}
+        {#<div class="portfolio__context">#}
+            {#<p class="portfolio__context -title">#}
+                {#Free Website PSD#}
+            {#</p>#}
+            {#<p class="portfolio__context -desc">#}
+                {#Web#}
+            {#</p>#}
+        {#</div>#}
+    {#</a>#}
+    </div>
+</section>

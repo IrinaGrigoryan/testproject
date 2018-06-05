@@ -1,0 +1,55 @@
+<section class="team-bar">
+    <div class="container">
+        <div class="team-wrapper">
+            <div class="team-bar__caption">
+                {{  captionItem(title = 'Meet...the team', desc = 'They are really nice!') }}
+            </div>
+        </div>
+    </div>
+</section>
+<section class="team">
+    <div class="container">
+        <div class="team-photo">
+
+            <button href=""# class="team-photo__btn -left"><img class="team-photo__arrow-left" src="../img/arrow-left.png" alt=""></button>
+            <button href="#" class="team-photo__btn -right"><img class="team-photo__arrow-right" src="../img/arrow-right.png" alt=""></button>
+
+            <div class="team-photo__list">
+                {% set team = [
+                    {
+                        name: 'Jonathan Doe',
+                        post: 'Creative Director'
+                    },
+                    {
+                        name: 'Jaden Doe',
+                        post: 'Mastermind'
+                    },
+                    {
+                        name: 'Mister Doe',
+                        post: 'Designer'
+                    }
+                ] %}
+
+                {% for item in team %}
+                    <div class="team-photo__item">
+                        <div class="team-photo__title">
+                            <div class="team-photo__context">
+                                <p class="team-photo__context -name">{{ item.name }}</p>
+                                <p class="team-photo__context -post">{{ item.post }}</p>
+                            </div>
+                            <div class="team-photo__social">
+                                <span><a href="#" class="social__link"><img src="../img/twitter-icon.png" alt=""></a></span>
+                                <span><a href="#" class="social__link"><img src="../img/facebook-icon.png" alt=""></a></span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <ul class="team-photo__pagination">
+                {% for item in range(0, 5) %}
+                    <li class="team-photo__bullet"><button class="team-photo__bullet-btn">{{ item }}</button></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
