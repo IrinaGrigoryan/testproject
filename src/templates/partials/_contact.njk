@@ -1,0 +1,95 @@
+<section class="contact">
+    <div class="container">
+        <div class="contact__caption">
+            {{  captionItem(title = 'Contact', desc = 'We would really love to hear from you!') }}
+        </div>
+    </div>
+        <div class="contact__map">
+            <div class="contact__marker">
+                Roran <span class="logo__dot">.</span>
+            </div>
+        </div>
+
+<div class="contact-info">
+    <div class="container">
+        <div class="contact-info__wrapper">
+            <div class="contact-info__form-field">
+                <form method='post' class='form'>
+
+                    <div class='form__row'>
+                        <label for='form_yname'>Your name</label>
+                        <span class="required">required</span>
+                        <input type='text' id='form_yname' name='your_name'>
+
+                    </div>
+
+                    <div class='form__row'>
+                        <label for='form_email'>Your email</label>
+                        <span class="required">required</span>
+                        <input type='email' id='form_email' name='email'>
+                    </div>
+
+                    <div class='form__row'>
+                        <label for='form_subject'>Subject</label>
+                        <input type='text' id='form_subject' name='subject'>
+                    </div>
+
+                    <div class='form__row'>
+                        <label for='form_message'>Message</label>
+                        <span class="required">required</span>
+                        <textarea id='form_message' name='message'></textarea>
+                    </div>
+
+                    <div class="form__row">
+                        <button type="submit" form="form" value='Send'>Send</button>
+                    </div>
+            </form>
+            </div>
+
+            <div class="contact-info__titles">
+                <div class="contact-info__detail">
+                     <h2 class="contact-info__caption">
+                        Contact info
+                    </h2>
+                     <p class="contact-info__text">
+                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at purus vulputate.
+                     </p>
+                    <p class="contact-info__text">
+                            Vehicula nisi vitae, lobortis ante. Praesent sodales iaculis ultricies.
+                    </p>
+                </div>
+
+                <div class="contact-info__address">
+                    {% set contacts = [
+                        {
+                            text: ' Rue de Halle 245<br>1000 Brussels'|safe,
+                            icon: 'icon1'
+                        },
+                        {
+                            text: '<a href="tel: 031234567" class="contact-info__link">03 123 45 67</a><br>
+                            <a href="tel: 0412345678" class="contact-info__link">0412 345 678</a>'|safe,
+                            icon: 'icon2'
+                        },
+                        {
+                            text: '<a href="mailto:info@roran.com" class="contact-info__link">info@roran.com<br>
+                            <a href="mailto:question@roran.com" class="contact-info__link">question@roran.com</a>'|safe,
+                            icon: 'icon3'
+                        }
+                    ] %}
+                    {% for item in contacts %}
+                        <div class="contact-info__address -item">
+                            <img src="img/contact-{{ item.icon }}.png" alt="">
+                            <span>
+                                {{ item.text }}
+                            </span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+</section>
