@@ -1,0 +1,23 @@
+<div class="footer-bar">
+    <div class="container">
+        <div class="footer">
+        <div class="footer__copyright">
+            © 2014 Roran. All rights reserved
+        </div>
+            <div class="footer__arrow">
+                <button class="footer__button"><img class="" src="../img/footer-arrow.png" alt=""></button>
+            </div>
+        <div class="footer__social">
+            {% set socialsItems = ['footer-linkedIn', 'footer-pinterest', 'footer-twitter', 'footer-facebook'] %}
+            <ul class="social">
+                {% for item in socialsItems %}
+                    <li class="social__item"><a href="#" class="social__link"><img src="img/{{ item }}.png" alt="pinterest"></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        </div>
+
+    </div>
+
+</div>
