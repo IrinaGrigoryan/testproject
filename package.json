@@ -17,5 +17,9 @@
     "gulp-imagemin": "^4.1.0",
     "gulp-nunjucks-render": "^2.2.2",
     "gulp-sass": "^4.0.1"
+  },
+  "dependencies": {
+    "flexboxgrid": "^6.3.1",
+    "swiper": "^4.3.3"
   }
 }

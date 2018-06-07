@@ -14,19 +14,17 @@
     <div class="container">
         <div class="contact-info__wrapper">
             <div class="contact-info__form-field">
-                <form method='post' class='form'>
-
+                <form method='' action="" class='form'>
                     <div class='form__row'>
                         <label for='form_yname'>Your name</label>
                         <span class="required">required</span>
-                        <input type='text' id='form_yname' name='your_name'>
-
+                        <input type='text' id='form_yname' name='your_name' required>
                     </div>
 
                     <div class='form__row'>
                         <label for='form_email'>Your email</label>
                         <span class="required">required</span>
-                        <input type='email' id='form_email' name='email'>
+                        <input type='email' id='form_email' name='email' required>
                     </div>
 
                     <div class='form__row'>
@@ -37,11 +35,11 @@
                     <div class='form__row'>
                         <label for='form_message'>Message</label>
                         <span class="required">required</span>
-                        <textarea id='form_message' name='message'></textarea>
+                        <textarea id='form_message' name='message' required></textarea>
                     </div>
 
                     <div class="form__row">
-                        <button type="submit" form="form" value='Send'>Send</button>
+                        <button type="submit">Send</button>
                     </div>
             </form>
             </div>

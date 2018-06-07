@@ -1,3 +1,4 @@
+@import "../../node_modules/swiper/dist/css/swiper.min";
 @import "partials/fonts";
 
 $color-white: #fff;
@@ -12,6 +13,13 @@ $f-exbold: 'open_sans_extraboldregular', sans-serif;
     transition: opacity 300ms ease;
   }
 }
+
+@mixin breakpoint($size) {
+  @media screen and (max-width: $size + 'px') {
+    @content;
+  }
+}
+
 html {
   font-size: 10px;
   box-sizing: border-box;
@@ -19,7 +27,7 @@ html {
   *,
   *::before,
   *::after {
-    border-box: inherit;
+    box-sizing: inherit;
   }
 }
 
@@ -29,19 +37,21 @@ body {
   overflow-x: hidden;
   font-family: $f-regular;
   background: $color-white;
+  width: 100%;
+
 }
 
-@mixin breakpoint($media) {
-  @if $media == 'md' {
-    @media screen and (max-width: 991px) {
-      @content;
-    }
-  } @else if $media == 'sm' {
-    @media screen and (max-width: 768px) {
-      @content;
-    }
-  }
-}
+//@mixin breakpoint($media) {
+//  @if $media == 'md' {
+//    @media screen and (max-width: 991px) {
+//      @content;
+//    }
+//  } @else if $media == 'sm' {
+//    @media screen and (max-width: 768px) {
+//      @content;
+//    }
+//  }
+//}
 
 %font-regular {
   font-family: $f-regular;
@@ -64,18 +74,24 @@ div {
 
 .site-wrapper {
   margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .container {
   width: 96rem;
   margin: 0 auto;
   padding: 0 1rem;
+  //position: relative;
 
   @media screen and (max-width: 980px) {
     width: 76rem;
   }
 
   @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 431px) {
     width: 100%;
   }
 }
@@ -93,13 +109,19 @@ header {
   flex-direction: column;
   padding: 7.5rem 0rem 4rem 0rem;
   &__title {
-    color: #fff;
+    color: $color-white;
     width: auto;
-
+    @include breakpoint(793) {
+      margin-top: 2rem;
+    }
     &.-logo {
+
       font: {
         family: $f-exbold;
         size: 10rem;
+      }
+      @include breakpoint(360) {
+        font-size: 8rem;
       }
       line-height: 9rem;
       text-shadow: 4px 4px 0px #339381;
@@ -109,6 +131,9 @@ header {
         family: "open_sansregular";
         size: 5.4rem;
       }
+      @include breakpoint(360) {
+        font-size: 4rem;
+      }
       text-transform: uppercase;
       text-shadow: 3px 3px 0px #339381;
       line-height: 7.2rem;
@@ -117,6 +142,9 @@ header {
       font: {
         family: $f-regular;
         size: 3.4rem;
+      }
+      @include breakpoint(350) {
+        font-size: 2.4rem;
       }
       text-shadow: 3px 3px 0px #339381;
     }
@@ -136,6 +164,9 @@ header {
     margin-top: 2rem;
     margin-left: 0.5rem;
     margin-bottom: 15rem;
+    @include breakpoint(423) {
+      margin-bottom: 10rem;
+    }
   }
   &__arrow {
     display: flex;
@@ -169,12 +200,24 @@ header {
   right: 0;
   top: 0;
   margin-top: 8.2rem;
+  @include breakpoint(889) {
+    margin: 0;
+    padding: 0;
+  }
+  @include breakpoint(426) {
+    left: 0;
+  }
   &__trapeze {
     border-bottom: 8.5rem solid #2e8272;
     border-left: 50px solid transparent;
     border-right: 0px solid transparent;
-    height: 9rem;
+    //height: 9rem;
     min-width: 43rem;
+    @include breakpoint(430) {
+      width: 100%;
+      border-left: 0px;
+      min-width: 32rem;
+    }
   }
   &__text {
     font: {
@@ -182,19 +225,29 @@ header {
       size: 1.8rem;
     }
     text-align: right;
-    color: #fff;
+    color: $color-white;
     width: 23rem;
     position: absolute;
-    padding-top: 2.4rem;
+    padding-top: 2rem;
     padding-right: 1rem;
+    @include breakpoint(431) {
+      text-align: left;
+      margin-left: 2rem;
+    }
   }
 }
+
 
 .top-bar__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @include breakpoint(384) {
+    flex-direction: column;
+    justify-content: center;
+  }
 }
+
 
 .top-bar {
   border-bottom: 1px solid #dfdfdf;
@@ -205,10 +258,19 @@ header {
     color: #303030;
     padding: 1.5rem 1rem 1.5rem 0rem;
     width: 12rem;
-
-  }
+    @include breakpoint(384) {
+      padding-right: 0;
+      padding-left: 1rem;
+    }
+   }
   &__social {
     margin-right: 2rem;
+    @include breakpoint(424) {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      margin-right: 0;
+      margin-left: -1rem;
+    }
   }
 
   &__menu {
@@ -245,6 +307,7 @@ header {
     justify-content: center;
     margin: 0 -1rem;
     padding: 0;
+
   }
   &__item {
     padding: 0 1.5rem;
@@ -288,6 +351,9 @@ header {
       color: #303030;
       margin: 0rem 0rem 1.5rem 0;
       line-height: 1em;
+      @media screen and (max-width: 347px) {
+        font-size: 4rem;
+      }
     }
 
     p {
@@ -308,21 +374,35 @@ header {
   }
   &__flex {
     display: flex;
-    justify-content: center;
-    margin: 0rem -7.5rem;
-    &.-item {
+    flex-wrap: wrap;
+    padding-top: 6.5rem;
+    margin: 0 -7.5rem;
+    @media screen and (max-width: 767px) {
+      margin-top: -2rem;
+    }
+
+  }
+   &__item {
       display: flex;
       flex-direction: column;
-      width: 22rem;
+      width: 33%;
+      flex-grow: 1;
       align-items: center;
       text-align: center;
-      margin: 6.8rem 7.5rem 0rem 7.5rem;
-
+      padding: 0 7.5rem;
+      box-sizing: border-box;
       p {
         color: #707070;
       }
-    }
-  }
+     img {
+       height: 5.5rem;
+     }
+     @media screen and (max-width: 767px) {
+       width: 100%;
+       padding-top: 2rem;
+     }
+
+   }
 }
 
 .section-numbers {
@@ -335,17 +415,20 @@ header {
     display: flex;
     flex-wrap: wrap;
     padding: 0;
-    margin: 0 -1rem;
+    margin: -2rem -1rem;
   }
   &__item {
     display: flex;
     box-sizing: border-box;
     justify-content: center;
     width: 25%;
-    padding: 0 1rem;
+    padding: 2rem 1rem;
 
     @media screen and (max-width: 980px) {
       width: 50%;
+    }
+    @media screen and (max-width: 370px) {
+      width: 100%;
     }
   }
   &__icon {
@@ -385,7 +468,7 @@ header {
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      border-bottom: 0.5px solid #fff;
+      border-bottom: 0.5px solid $color-white;
       width: 13rem;
       margin: 0 auto;
     }
@@ -394,12 +477,12 @@ header {
     margin: 0 auto;
     font-family: $f-exbold;
     font-size: 2.7rem;
-    color: #fff;
+    color: $color-white;
   }
   &__titles p {
     margin: 0 auto;
     font-size: 2.3rem;
-    color: #fff;
+    color: $color-white;
     padding-bottom: 1.8rem;
   }
 
@@ -418,6 +501,17 @@ header {
     width: 25%;
     padding: 0 2rem;
     margin-bottom: 2rem;
+    @include breakpoint(755) {
+      width: 50%;
+      padding: 2rem 6rem;
+    }
+    @include breakpoint(550) {
+       width: 100%;
+       padding: 2rem 15rem;
+     }
+    @include breakpoint(435) {
+     padding: 2rem 6rem;
+    }
 
     img {
       display: block;
@@ -465,12 +559,21 @@ header {
     margin: 0 auto;
     padding-left: 0;
     justify-content: space-between;
+    @include breakpoint(627) {
+     // padding: 2rem 6rem;
+    }
   }
   &__item {
-    width: 30rem;
+    width: 33%;
     display: flex;
     padding: 6rem 1rem 0 1rem;
     box-sizing: border-box;
+    @include breakpoint(720) {
+      width: 50%;
+    }
+    @include breakpoint(480) {
+      width: 100%;
+    }
   }
   &__icon {
     display: block;
@@ -523,7 +626,7 @@ header {
     font-size: 2.1rem;
     width: 80%;
     p {
-      color: #fff;
+      color: $color-white;
       margin: 0;
       padding-bottom: 2.8rem;
       position: relative;
@@ -540,13 +643,13 @@ header {
       }
     }
     &.-name {
-      color: #fff;
+      color: $color-white;
       padding-top: 2.4rem;
 
     }
     &.-bold {
       font-weight: 900;
-      color: #fff;
+      color: $color-white;
       opacity: 1;
     }
   }
@@ -554,7 +657,7 @@ header {
 
 blockquote {
   position: relative;
-  color: #fff;
+  color: $color-white;
   margin: 0;
 }
 
@@ -566,6 +669,10 @@ blockquote::before {
   top: 15px;
   left: -70px;
   content: "\201C";
+  @include breakpoint(712) {
+    top: -10px;
+    left: -20px;
+  }
 }
 
 blockquote::after {
@@ -577,6 +684,26 @@ blockquote::after {
   right: -80px;
   bottom: -15px;
   content: "\201C";
+  @include breakpoint(699) {
+    top: 150px;
+    right: 60px;
+  }
+  @include breakpoint(600) {
+    top: 180px;
+    right: 40px;
+  }
+  @include breakpoint(510) {
+    top: 220px;
+    right: 0px;
+  }
+  @include breakpoint(418) {
+    top: 250px;
+    right: 0px;
+  }
+  @include breakpoint(366) {
+    top: 290px;
+    right: -10px;
+  }
 }
 
 @mixin triangle($width, $direction, $color) {
@@ -614,7 +741,7 @@ blockquote::after {
     content: '';
     position: absolute;
     @include triangle(5.5rem, up, #f0f0f0);
-    margin-top: -2.75rem;
+    margin-top: -2.73rem;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -630,42 +757,55 @@ blockquote::after {
   background-color: #f0f0f0;
   position: relative;
   //height: auto;
+  &__wrapper {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+  }
 }
-
 .team-photo {
-  margin: 0rem -1rem 0rem -1rem;
+  //margin: 0rem -1rem 0rem -1rem;
   position: relative;
 
   &__btn {
+    background-image: none;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     @include animation;
     border-style: none;
     background-color: #f0f0f0;
+    cursor: pointer;
+    @include breakpoint(796) {
+      //display: none;
+    }
+    //&.swiper-button-prev,
+    //&.swiper-button-next {
+    //  background-image: none;
+    //}
     &:focus {
       outline: 0;
     }
 
     &.-left {
-      left: -5rem;
-
+      left: -4rem;
+      @include breakpoint(768) {
+        left: -3rem;
+      }
     }
 
     &.-right {
-      right: -5rem;
+      right: -4rem;
+      @include breakpoint(768) {
+        right: -3rem;
+      }
     }
   }
-
-  &__pagination {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    padding-left: 0;
-  }
-
-  &__bullet-btn {
+.swiper-pagination {
+  position: relative;
+  padding-top: 3rem;
+}
+.swiper-pagination-bullet {
     width: 10px;
     height: 10px;
     cursor: pointer;
@@ -675,30 +815,58 @@ blockquote::after {
     margin: auto 0.5rem;
     font-size: 0;
     padding: 0;
-
+    opacity: 1;
     &:hover {
       background-color: $color-green;
+      transition: all 500ms ease;
     }
-    &:focus {
-      outline: 0;
-    }
-  }
+}
+.swiper-pagination-bullet-active {
+    background: $color-green;
+}
+
+  //&__pagination {
+  //  list-style: none;
+  //  display: flex;
+  //  justify-content: center;
+  //  margin-top: 2rem;
+  //  padding-left: 0;
+  //}
+  //
+  //&__bullet-btn {
+  //  width: 10px;
+  //  height: 10px;
+  //  cursor: pointer;
+  //  background: #d5d5d5;
+  //  border-radius: 10px;
+  //  border-style: none;
+  //  margin: auto 0.5rem;
+  //  font-size: 0;
+  //  padding: 0;
+  //
+  //  &:hover {
+  //    background-color: $color-green;
+  //    transition: all 500ms ease;
+  //  }
+  //  &:focus {
+  //    outline: 0;
+  //  }
+  //}
 
   &__list {
-    display: flex;
+
     padding-left: 0;
     list-style: none;
     margin: 0 auto;
+
   }
   &__item {
-    width: calc(100% / 3);
     height: 30rem;
     background-color: $color-green;
-    margin: auto 1rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-  }
+}
   &__title {
     background-color: $color-white;
     margin-bottom: 0.5rem;
@@ -756,16 +924,23 @@ blockquote::after {
     padding: 4.5rem 0 5rem 0;
     justify-content: center;
     margin: 0 auto;
+    @include breakpoint(480) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
   &__bullet {
     padding: 0 2rem;
+    @include breakpoint(480) {
+      padding-top: 2rem;
+    }
   }
   &__bullet-btn {
     cursor: pointer;
     border-style: none;
     font-size: 1.6rem;
     padding: 0;
-    background-color: #ffffff;
+    background-color: $color-white;
     color: #b4b4b4;
     &:focus {
       outline: 0;
@@ -782,6 +957,12 @@ blockquote::after {
   &__item {
     width: 25%;
     height: 25rem;
+    @include breakpoint(798) {
+      width: 50%;
+    }
+    @include breakpoint(460) {
+      width: 100%;
+    }
   }
   &__detail {
     transition: opacity 500ms ease, border-radius 500ms ease-in;
@@ -870,14 +1051,28 @@ blockquote::after {
     display: flex;
     padding: 4.5rem 5rem;
     box-sizing: border-box;
+    @include breakpoint(597) {
+      flex-direction: column;
+    }
   }
   &__form-field {
     width: 55%;
+    @include breakpoint(597) {
+      width: 100%;
+    }
   }
   &__titles {
     width: 45%;
     box-sizing: border-box;
     padding-left: 7rem;
+    @include breakpoint(687) {
+      padding-left: 3rem;
+      padding-right: 2rem;
+    }
+    @include breakpoint(597) {
+      width: 100%;
+      padding: 5rem 0 0 0;
+    }
   }
   &__detail {
     padding-bottom: 2.5rem;
@@ -914,6 +1109,7 @@ blockquote::after {
       }
     }
   }
+
   &__link {
     text-decoration-line: none;
     color: #303030;
@@ -955,6 +1151,18 @@ blockquote::after {
       border: 1px solid #e2e2e2;
       padding: 0.5rem 0.5rem;
       box-sizing: border-box;
+      &:focus {
+        outline: none;
+      }
+      &:required {
+        //border: 1px solid $color-green; /* Зеленая рамка для обязательных полей */
+      }
+      &:valid:focus {
+        border: 1px solid $color-green;
+      }
+      &:invalid:focus {
+        border: 1px solid red;
+      }
     }
     textarea {
       height: 20rem;
@@ -964,6 +1172,18 @@ blockquote::after {
       width: 100%;
       border: 1px solid #e2e2e2;
       box-sizing: border-box;
+      &:focus {
+        outline: none;
+      }
+      &:required {
+        //border: 1px solid $color-green; /* Зеленая рамка для обязательных полей */
+        //&:valid {
+        //  border: 1px solid $color-green;
+        //}
+        &:invalid:focus {
+          border: 1px solid red;
+        }
+      }
     }
     button {
       padding: 1.7rem 3rem;
@@ -990,19 +1210,38 @@ blockquote::after {
 .footer {
   display: flex;
   padding: 2.3rem 0;
+  @include breakpoint(550) {
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__copyright {
     font-size: 1.5rem;
     color: #919191;
     width: 45%;
+    @include breakpoint(550) {
+      padding-top: 2rem;
+      width: 100%;
+      text-align: center;
+    }
   }
   &__arrow {
     width: 10%;
     text-align: center;
+    @include breakpoint(550) {
+      order: -1;
+      width: 100%;
+    }
   }
   &__social {
     width: 45%;
     display: flex;
     justify-content: flex-end;
+    @include breakpoint(550) {
+      padding-top: 2rem;
+      justify-content: center;
+      margin-left: -1rem;
+    }
   }
   &__button {
     border-style: none;
@@ -1012,6 +1251,7 @@ blockquote::after {
     &:focus {
       outline: 0;
     }
+
   }
 }
 
