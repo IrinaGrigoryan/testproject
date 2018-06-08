@@ -4,36 +4,99 @@
             {{  captionItem(title = 'Portfolio', desc = 'This is what we’ve been working on') }}
         </div>
     </div>
-    <ul class="portfolio__list-btn">
+    <ul class="portfolio__list-btn filter-button-group">
         {% set items = ["Web", "Digital Art", "Illustration", "Branding", "All"] %}
         {% for item in items %}
-            <li class="portfolio__bullet"><button class="portfolio__bullet-btn">{{ item }}</button></li>
+            <li class="portfolio__bullet">
+                {% if not loop.last %}
+                    <button class="portfolio__bullet-btn" data-filter=".{{ item | lower | replace(' ', '-')}}">{{ item }}</button>
+                {% else %}
+                    <button class="portfolio__bullet-btn" data-filter="*">{{ item }}</button>
+                {% endif %}
+            </li>
         {% endfor %}
     </ul>
-    <div class="portfolio__images">
-        {% for item in range(0, 8) %}
-            <div class="portfolio__item">
-                <a href="#" class="portfolio__link">
-                    <span class="portfolio__img">
-                        <img src="https://picsum.photos/340/300/?random&image={{ loop.index }}" alt="">
-                    </span>
-                    <span class="portfolio__detail">
-
-
+    <div class="portfolio__images grid">
+    {% set images = [
+        {
+            category: 'web',
+            caption:''
+        },
+        {
+            category: 'digital-art',
+            caption:''
+        },
+        {
+            category: 'illustration',
+            caption:''
+        },
+        {
+            category: 'branding',
+            caption:''
+        },
+        {
+            category: 'web',
+            caption:''
+        },
+        {
+            category: 'web',
+            caption:''
+        },
+        {
+            category: 'web',
+            caption:''
+        },
+        {
+            category: 'all',
+            caption:''
+        }
+    ]
+    %}
+        {% for item in images %}
+            <div class="portfolio__item grid-item {{ item.category }}" data-category="{{ item.category }}">
+                <a href="https://picsum.photos/800/600/?random&image={{ loop.index }}"
+                       class="portfolio__link" data-fancybox="gallery" data-caption="{{ item.caption }}">
+                        <span class="portfolio__img">
+                                <img src="https://picsum.photos/200/250/?random&image={{ loop.index }}" alt="">
+                        </span>
+                        <span class="portfolio__detail">
                                 <div class="portfolio__context">
-                                     <p class="portfolio__title">
+                                    <p class="portfolio__title">
                                         Free Website PSD
                                     </p>
                                     <p class="portfolio__desc">
                                         Web
                                     </p>
                                 </div>
-
-                    </span>
+                        </span>
                 </a>
             </div>
         {% endfor %}
+    </div>
+    {#<div class="portfolio__images grid">#}
+        {#{% for item in range(0, 8) %}#}
+            {#<div class="portfolio__item grid-item web" data-category="web">#}
+                {#<a href="https://picsum.photos/340/300/?random&image={{ loop.index }}" class="portfolio__link" data-fancybox="gallery" data-caption="Caption for single image">#}
+                    {#<span class="portfolio__img">#}
+                        {#<img src="https://picsum.photos/340/300/?random&image={{ loop.index }}" alt="">#}
+                    {#</span>#}
+                    {#<span class="portfolio__detail">#}
+                        {#<div class="portfolio__context">#}
+                            {#<p class="portfolio__title">#}
+                                {#Free Website PSD#}
+                            {#</p>#}
+                            {#<p class="portfolio__desc">#}
+                                {#Web#}
+                            {#</p>#}
+                        {#</div>#}
+                    {#</span>#}
+                {#</a>#}
+            {#</div>#}
+        {#{% endfor %}#}
+    {#</div>#}
+</section>
 
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>#}
     {#<a href="#" class="portfolio__web-link">#}
         {#<img class="portfolio__link-icon" src="../img/link-icon.png" alt="">#}
         {#<div class="portfolio__context">#}
@@ -45,5 +108,4 @@
             {#</p>#}
         {#</div>#}
     {#</a>#}
-    </div>
-</section>
+        {#<img src="https://picsum.photos/340/300/?random&image={{ loop.index }}" alt="">#}
