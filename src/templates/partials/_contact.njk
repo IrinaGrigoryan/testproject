@@ -14,17 +14,25 @@
     <div class="container">
         <div class="contact-info__wrapper">
             <div class="contact-info__form-field">
-                <form method='' action="" class='form'>
+                {#<div class="bs-callout bs-callout-warning hidden">#}
+                    {#<h4>Oh snap!</h4>#}
+                    {#<p>This form seems to be invalid :(</p>#}
+                {#</div>#}
+                {#<div class="bs-callout bs-callout-info hidden">#}
+                    {#<h4>Yay!</h4>#}
+                    {#<p>Everything seems to be ok :)</p>#}
+                {#</div>#}
+                <form method='' action="" id='form' class='form' data-parsley-validate>
                     <div class='form__row'>
                         <label for='form_yname'>Your name</label>
                         <span class="required">required</span>
-                        <input type='text' id='form_yname' name='your_name' required>
+                        <input type='text' class="form-control" id='form_yname' name='your_name' required>
                     </div>
 
                     <div class='form__row'>
                         <label for='form_email'>Your email</label>
                         <span class="required">required</span>
-                        <input type='email' id='form_email' name='email' required>
+                        <input type='email' class="form-control" id='form_email' data-parsley-trigger="change" name='email' required>
                     </div>
 
                     <div class='form__row'>
@@ -35,11 +43,14 @@
                     <div class='form__row'>
                         <label for='form_message'>Message</label>
                         <span class="required">required</span>
-                        <textarea id='form_message' name='message' required></textarea>
+                        <textarea id='form_message' class="form-control" name='message' data-parsley-trigger="keyup"
+                                  data-parsley-minlength="20" data-parsley-maxlength="100"
+                                  data-parsley-minlength-message="Come on! You need to enter at least a 20
+                                  character comment.." data-parsley-validation-threshold="10" required></textarea>
                     </div>
 
                     <div class="form__row">
-                        <button type="submit">Send</button>
+                        <button type="submit" class="btn btn-default" value="validate">Send</button>
                     </div>
             </form>
             </div>
