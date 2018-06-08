@@ -99,6 +99,7 @@ div {
 header {
   background-color: $color-green;
 
+
 }
 
 .heading {
@@ -174,6 +175,10 @@ header {
     align-self: center;
     flex-direction: column;
     opacity: 0.9;
+    animation-name: heading__arrow;
+    animation-duration: 2.5s;
+    animation-timing-function: ease;
+    visibility: visible !important;
     &:hover {
       opacity: 1;
       transition: opacity 300ms ease;
@@ -192,6 +197,26 @@ header {
         transition: opacity 300ms ease;
       }
     }
+  }
+}
+@keyframes heading__arrow {
+  0% {
+    transform: translateY(-100%);
+  }
+  50%{
+    transform: translateY(8%);
+  }
+  65%{
+    transform: translateY(-4%);
+  }
+  80%{
+    transform: translateY(4%);
+  }
+  95%{
+    transform: translateY(-2%);
+  }
+  100% {
+    transform: translateY(0%);
   }
 }
 
@@ -866,7 +891,7 @@ blockquote::after {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-}
+  }
   &__title {
     background-color: $color-white;
     margin-bottom: 0.5rem;
@@ -889,7 +914,9 @@ blockquote::after {
     }
   }
   &__social {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
     margin: 0 -1rem 0 0;
 
     img {
@@ -905,6 +932,9 @@ blockquote::after {
   &__link {
     display: block;
     position: relative;
+    &:focus {
+      outline: none;
+    }
   }
 
   &__img {
@@ -954,6 +984,7 @@ blockquote::after {
     display: flex;
     flex-wrap: wrap;
   }
+
   &__item {
     width: 25%;
     height: 25rem;
@@ -1004,6 +1035,26 @@ blockquote::after {
   }
 }
 
+.grid {
+  width: 100%;
+  display: block !important;
+}
+
+.grid-item {
+  width: 25%;
+  overflow: hidden;
+  @include breakpoint(812) {
+    width: 50%;
+  }
+  @include breakpoint(460) {
+    width: 100%;
+  }
+
+  span {
+    display: block;
+  }
+}
+
 .contact {
   &__caption {
     padding: 7rem 0 4.5rem 0;
@@ -1051,13 +1102,13 @@ blockquote::after {
     display: flex;
     padding: 4.5rem 5rem;
     box-sizing: border-box;
-    @include breakpoint(597) {
+    @include breakpoint(610) {
       flex-direction: column;
     }
   }
   &__form-field {
     width: 55%;
-    @include breakpoint(597) {
+    @include breakpoint(610) {
       width: 100%;
     }
   }
@@ -1069,7 +1120,7 @@ blockquote::after {
       padding-left: 3rem;
       padding-right: 2rem;
     }
-    @include breakpoint(597) {
+    @include breakpoint(610) {
       width: 100%;
       padding: 5rem 0 0 0;
     }
@@ -1134,15 +1185,27 @@ blockquote::after {
       padding-left: 1rem;
       box-sizing: border-box;
       margin-bottom: 0.7rem;
+      order: -1;
+    }
+
+    span {
+      display: none;
+    }
+
+    &.required {
+      &::before {
+        content: 'required';
+        width: 50%;
+        color: $color-green;
+        font-size: 1.2rem;
+        text-align: right;
+        box-sizing: border-box;
+        padding-right: 0.5rem;
+        padding-top: 0.4rem;
+      }
     }
     span {
-      width: 50%;
-      color: $color-green;
-      font-size: 1.2rem;
-      text-align: right;
-      box-sizing: border-box;
-      padding-right: 0.5rem;
-      padding-top: 0.4rem;
+
     }
     input {
       height: 4.5rem;
@@ -1203,7 +1266,10 @@ blockquote::after {
     }
   }
 }
-
+.parsley-required, .parsley-type, .parsley-minlength {
+  list-style: none;
+  color: red;
+}
 .footer-bar {
   background-color: #d8d8d8;
 }
